@@ -20,5 +20,5 @@ JAGSmodule:::dsnorm(0.0, -0.92253, 0.977969, -0.631178, FALSE)
 JAGSmodule:::dsnorm(0.0, 0.0, 1.0, 0.0, FALSE)
 
 test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+  expect_equal(JAGSmodule:::rcpp_dsnorm(0.0, 0.0, 1.0, 0.0, FALSE), dnorm(0.0))
 })

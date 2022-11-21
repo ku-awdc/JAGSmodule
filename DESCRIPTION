@@ -1,6 +1,7 @@
 Package: JAGSmodule
 Title: What the Package Does (One Line, Title Case)
-Version: 0.1.0-1
+Date: 2022-11-21
+Version: 0.1.0-2
 Authors@R: 
     c(
       person("Matt", "Denwood", , "md@sund.ku.dk", role = c("aut", "cre")),
