@@ -1,3 +1,6 @@
+// TODO: fix issue with dsnorm giving negative likelihoods
+// TODO: implement p/q/r snorm (currently from Lomax distribution)
+
 #include "DSNorm.h"
 #include <util/nainf.h>
 #include <rng/RNG.h>
@@ -63,6 +66,14 @@ double DSNorm::d(double x, PDFType type, vector<double const *> const &par, bool
   double density = g * R::dnorm(z/Xi, 0.0, 1.0, false) * sigma;
 
   double result = density / sd;
+
+  if (result < 0.0)
+  {
+    Rcpp::Rcout << "\nNote:  negative likelihood (" << result <<
+      ") produced for the following parameter values:\n" <<
+        "x = " << x << "; mean = " << mean <<
+        "; sd = " << sd << "; xi = " << xi << "\n" << std::endl;
+  }
 
   return give_log ? log(result) : result;
 /*
