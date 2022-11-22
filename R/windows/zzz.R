@@ -71,7 +71,7 @@
 
     ## Major version of JAGS library should match major version
     ## of the rjags package
-    jags.major <- packageVersion(pkg, lib)$major
+    jags.major <- packageVersion("rjags")$major
 
     ## Try environment variable first
     jags.home <- Sys.getenv("JAGS_HOME")

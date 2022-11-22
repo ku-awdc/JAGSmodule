@@ -2,7 +2,9 @@ library("runjags")
 
 mm <- "model{
 
-  x ~ dsnorm(mean, sd, xi)
+  for(i in 1:10){
+    x[i] ~ dsnorm(mean, sd, xi)
+  }
   mean ~ dnorm(0,1)
   sd ~ dgamma(1,1)
   xi ~ dnorm(0,1)T(0,)
@@ -11,7 +13,7 @@ mm <- "model{
   #monitor# mean, sd, xi
 }"
 
-x <- 0
+x <- rnorm(10)
 run.jags(mm, method="rjags")
 
 
